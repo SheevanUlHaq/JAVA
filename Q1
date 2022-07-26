@@ -1,0 +1,60 @@
+public class complex {
+    int real,imag;
+
+    public complex()    // default constructor
+    {
+        real = 0;
+        imag = 0;
+    }
+
+    public complex(int x, int y)     // parameterized constructor
+    {
+        real = x;
+        imag = y;
+    }
+
+
+    // TO add two complex number
+
+    public complex add(complex ob) {
+        complex o = new complex();
+        o.real = real + ob.real;
+        o.imag = imag + ob.imag;
+        return o;
+
+    }
+
+    // To multiply two complex number
+
+    public complex multiply(complex ob) {
+        complex o = new complex();
+        o.real = (real * ob.real) - (imag * ob.imag);
+        o.imag = (real * ob.imag) + (imag * ob.real);
+        return o;
+    }
+
+    // To display complex number
+
+    public String toString() {
+        return real + "+" + imag+"i";
+    }
+}
+    class demo{
+        public static void main(String args[]){
+            complex o1=new complex(1,2);
+            System.out.println("fisrt  no is "+o1.toString());
+            complex o2=new complex(2,5);
+            System.out.println("second no is "+o2.toString());
+            System.out.println();
+            complex o3;
+            o3=o1.add(o2);
+            System.out.print("addition of complex is :");
+            System.out.println(o3.toString());
+            o3=o1.multiply(o2);
+            System.out.print("multiplication of complex is :");
+            System.out.println(o3.toString());
+
+    }
+
+}
+
