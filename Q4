@@ -1,0 +1,40 @@
+/*****UnderAge.java*****/
+package practical4;
+public class UnderAge extends Exception{
+int age;
+public UnderAge(String s) {
+super(s);
+}
+}
+class Voter{
+int age;
+public Voter(int age) {
+this.age = age;
+}
+void checkEligibity() {
+try {
+if(age<18) {
+throw new UnderAge("Hey Kido , get out of 
+here.");
+}
+System.out.println("Congrates! You are eligible for 
+vote");
+}
+catch(UnderAge voter) {
+System.out.println(voter.getMessage());
+}
+}
+}
+
+/*****Main.java*****/
+package practical4;
+import java.util.Scanner;
+public class Main {
+public static void main(String args[]) {
+Scanner sc = new Scanner(System.in);
+System.out.println("Enter your age : ");
+int age = sc.nextInt();
+Voter man = new Voter(age);
+man.checkEligibity();
+}
+}
