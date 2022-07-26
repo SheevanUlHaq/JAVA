@@ -1,0 +1,46 @@
+/*Using AWT, write a program which responds to KEY_TYPED event and updates the
+status window with message (“Typed character is: X”). Use adapter class for other
+two events.
+ */
+
+package programs;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+
+public class Prac_eleven extends Frame {
+    Label l;
+    Prac_eleven() {
+        super("KEY HANDLING");
+        this.setSize(400,500);
+        this.setVisible(true);
+        l=new Label();
+        this.setLayout(null);
+        l.setBounds(90,150,200,20);
+        this.add(l);
+        this.addKeyListener(new MyKeyAdapter());
+        this.addWindowListener(new MyWindowAdapter());
+    }
+    class MyKeyAdapter extends KeyAdapter{
+        public void keyPressed(KeyEvent k1){
+            System.out.println("Pressed key is "+k1.getKeyChar());
+        }
+        public void keyTyped(KeyEvent k1){
+            l.setText("Typed character is : "+k1.getKeyChar());
+        }
+        public void keyReleased(KeyEvent k1)
+        {
+            System.out.println("Released key is "+k1.getKeyChar());
+        }
+    }
+    class MyWindowAdapter extends WindowAdapter{
+        public void windowClosing(WindowEvent e){
+            System.exit(0);
+        }
+    }
+
+    public static void main(String[] args) {
+        new Prac_eleven();
+    }
+}
