@@ -1,0 +1,27 @@
+//Using AWT, write a program to display a string in frame window with pink color as background
+
+package programs;
+import java.awt.*;
+import java.awt.event.*;
+import java.applet.*;
+class Prac_nine extends Frame {
+    Frame f;
+    Prac_nine(){
+        f=new Frame("FRAME WINDOW ");
+        f.setSize(200,200);
+        Label l=new Label("This is a test .");
+        l.setAlignment(Label.CENTER);
+        f.setBackground(Color.PINK);
+        f.setVisible(true);
+        f.add(l);
+        f.addWindowListener(new MyWindowAdapter());
+    }
+    class MyWindowAdapter extends WindowAdapter {
+        public void windowClosing(WindowEvent we) {
+            System.exit(0);
+        }
+    }
+    public static void main(String[] args) {
+        Prac_nine ob = new Prac_nine();
+    }
+}
