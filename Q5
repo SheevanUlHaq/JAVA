@@ -1,0 +1,58 @@
+/*****Stack.java*****/
+package practical5;
+class StackException extends Exception {
+    public StackException(String s){
+    super(s);
+    }
+}
+public class Stack {
+    public final int MAX = 100;
+    public int top;
+    public int arr[] = new int[MAX];
+    Stack() {
+        top = -1;
+    }
+    public void Push(int val) throws StackException{
+    if(top == MAX-1) {
+        throw new StackException("Stack Overflow");
+    }
+    arr[++top] = val;
+    }
+    public void Pop() throws StackException{
+        if(top == -1) {
+            throw new StackException("Stack Underflow");
+        }
+        top--;
+    }
+    public int Top() {
+        return top;
+    }
+    public boolean isEmplty() {
+        return top == -1;
+    }
+}
+
+/*****Main.java*****/
+package practical5;
+public class Main {
+    public static void main(String[] args) {
+        Stack st = new Stack ();
+        try {
+        st.Push(0);
+        st.Push(1);
+        st.Push(2);
+        System.out.println(st.Top());
+        st.Pop();
+        System.out.println(st.Top());
+        st.Pop();
+        st.Pop();
+        System.out.println(st.isEmplty());
+        st.Pop();
+        }
+        catch(StackException e) {
+            System.out.println("Error detected : 
+            "+e.getMessage());
+            System.exit(1);
+        }
+    }
+}
