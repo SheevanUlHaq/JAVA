@@ -1,0 +1,64 @@
+/****Abstract Shape Class *****/
+package P1;
+public abstract class Shape {
+public abstract void area();
+}
+
+/*****Rectangle.java*****/
+package P2;
+import P1.Shape;
+public class Rectangle extends Shape {
+double lenght;
+double breadth;
+public Rectangle(double lenght,double breadth) {
+this.lenght=lenght;
+this.breadth=breadth;
+}
+@Override
+public void area() {
+System.out.println("The area of 
+rectangle :"+lenght*breadth);
+}
+}
+
+/*****Circle.java*****/
+package P3;
+import P1.Shape;
+public class Circle extends Shape {
+double radius;
+public Circle(double radius) {
+this.radius=radius;
+}
+@Override
+public void area() {
+System.out.println("The area of circle :"+ 
+Math.pow(radius, 2)*3.14);
+}
+}
+
+// main function class to ask the user for the type of shape
+import java.util.Scanner;
+import P1.Shape;
+import P2.Rectangle;
+import P3.Circle;
+public class Main {
+public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);
+Rectangle R1 = new Rectangle(5,4);
+Circle C1 = new Circle(5);
+Shape ref = null;
+System.out.println("Enter the type of the shape ( 1. Rectangle 
+2.Circle ) : ");
+int no = sc.nextInt();
+if(no == 1) {
+ref = R1;
+}
+else if (no ==2){
+ref = C1;
+}
+else {
+System.out.println("Invalid Input");
+}
+ref.area();
+}
+}
