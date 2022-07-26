@@ -1,0 +1,46 @@
+/*  Using AWT, write a program to create two buttons named “Red” and “Blue”. When a
+    button is pressed the background color should be set to the color named by the
+    button’s label
+
+*/
+
+package programs;
+
+import java.awt.*;
+import java.awt.event.*;
+
+class Prac_ten extends Frame implements ActionListener{
+    Prac_ten(){
+        super("COLOUR OF BACKGROUND");
+        Button red= new Button("RED");
+        Button blue= new Button("BLUE");
+        this.setSize(500,500);
+        this.setVisible(true);
+        this.setLayout(null);
+        red.setBounds(200,150,100,20);
+        blue.setBounds(200,250,100,20);
+        this.add(red);
+        this.add(blue);
+        red.addActionListener(this);
+        blue.addActionListener(this);
+        this.addWindowListener(new MyWindowAdapter());
+    }
+    public void actionPerformed(ActionEvent a){
+        if("RED"==a.getActionCommand()){
+            this.setBackground(Color.RED);
+        }
+        else
+            this.setBackground(Color.BLUE);
+    }
+
+    class MyWindowAdapter extends WindowAdapter{
+        public void windowClosing(WindowEvent e){
+            System.exit(0);
+        }
+    }
+
+    public static void main(String[] args) {
+        new Prac_ten();
+    }
+}
+
